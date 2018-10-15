@@ -1,0 +1,40 @@
+<div class="row justify-content-sm-center m-0" id="fat">
+	<form [formGroup]="userForm" (submit)="onSubmit()" class="pt-5 pb-5 col-sm-8 col-md-5 user-form">
+
+		<h1 class="mb-5 text-description">Hola, bienvenido, sabemos que quieres viajar en un 
+			<strong class="text-uppercase">{{ nameItem }}</strong>, por favor diligencia el siguiente formulario
+		</h1>
+
+
+	  <div class="form-group">
+	    <label for="name">Nombre: </label>
+	    <input type="text" formControlName="name" required class="form-control" id="name" placeholder="Nombre Completo">
+	    <small *ngIf="formErrors.name"  class="form-text text-danger">{{ formErrors.name }}</small>
+	  </div>
+
+	  <div class="form-group">
+	    <label for="email">Correo: </label>
+	    <input type="email" formControlName="email" class="form-control" id="email" placeholder="Correo">
+	    <small *ngIf="formErrors.email"  class="form-text text-danger">{{ formErrors.email }}</small>
+	  </div>
+
+	  <div class="form-group">
+	    <label for="mobile">Celular: </label>
+	    <input type="number" formControlName="mobile" class="form-control" id="mobile" placeholder="Celular" minlength="5" maxlength="8">
+	    <small *ngIf="formErrors.mobile"  class="form-text text-danger">{{ formErrors.mobile }}</small>
+	  </div>
+
+	  <div class="form-group">
+	    <label for="age">Edad: </label>
+	    <input type="number" formControlName="age" class="form-control" id="age" placeholder="Edad" min="18" max="100" >
+	    <small *ngIf="formErrors.age"  class="form-text text-danger">{{ formErrors.age }}</small>
+	    <small *ngIf="invalidAge"  class="form-text text-danger">El rango de edad. Desde 18 hasta 100 años</small>
+	  </div>
+	 
+	  <button type="submit" class="btn btn-primary mb-3" [disabled]="!userForm.valid">Enviar</button>
+
+	  
+	  <button type="hidden" class="btn btn-primary" id="btn-modal" data-toggle="modal" data-target="#exampleModal">Modal</button>
+
+	</form>
+</div>
